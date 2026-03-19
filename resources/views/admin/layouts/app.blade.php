@@ -99,6 +99,12 @@
             <a href="{{ route('admin.social-links.index') }}" class="nav-link {{ request()->routeIs('admin.social-links.*') ? 'active' : '' }}">
                 <i class="bi bi-share-fill"></i> Sosyal Medya
             </a>
+            <a href="{{ route('admin.users.index') }}" class="nav-link {{ request()->routeIs('admin.users.*') ? 'active' : '' }}">
+                <i class="bi bi-people-fill"></i> Kullanıcılar
+            </a>
+            <a href="{{ route('admin.change-password') }}" class="nav-link {{ request()->routeIs('admin.change-password') ? 'active' : '' }}">
+                <i class="bi bi-key-fill"></i> Şifre Değiştir
+            </a>
             <a href="{{ route('menu') }}" target="_blank" class="nav-link">
                 <i class="bi bi-phone-fill"></i> Menüyü Gör
             </a>
@@ -125,6 +131,13 @@
         @if(session('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        @endif
+
+        @if(session('error'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ session('error') }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
             </div>
         @endif

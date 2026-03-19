@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SocialLinkController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\MenuController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,4 +26,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::post('products/reorder', [ProductController::class, 'reorder'])->name('products.reorder');
     Route::resource('social-links', SocialLinkController::class)->except(['show']);
     Route::post('social-links/reorder', [SocialLinkController::class, 'reorder'])->name('social-links.reorder');
+    Route::resource('users', UserController::class)->except(['show']);
+    Route::get('change-password', [UserController::class, 'showChangePassword'])->name('change-password');
+    Route::post('change-password', [UserController::class, 'changePassword']);
 });
